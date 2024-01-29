@@ -2,7 +2,7 @@ const request = require('request-promise');
 const uniq = require('lodash.uniq');
 
 module.exports = {
-  name: 'apostrophe-forms',
+  name: 'apostrophe-forms-ya',
   label: 'Form',
   extend: 'apostrophe-pieces',
   seo: false,
@@ -351,10 +351,10 @@ module.exports = {
       }
 
       try {
-        const url = 'https://www.google.com/recaptcha/api/siteverify';
+        const url = 'https://smartcaptcha.yandexcloud.net/validate';
         const recaptchaResponse = JSON.parse(await request({
-          method: 'POST',
-          uri: `${url}?secret=${recaptchaSecret}&response=${input.recaptcha}`
+          method: 'GET',
+          uri: `${url}?secret=${recaptchaSecret}&token=${input.recaptcha}`
         }));
 
         if (!recaptchaResponse.success) {

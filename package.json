@@ -1,6 +1,6 @@
 {
-  "name": "apostrophe-forms",
-  "version": "1.12.0",
+  "name": "apostrophe-forms-ya",
+  "version": "1.12.7",
   "description": "Build forms for ApostropheCMS in a simple user interface.",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/apostrophecms/apostrophe-forms.git"
+    "url": "git+https://github.com/idlewe/apostrophe-forms.git"
   },
   "keywords": [
     "apostrophe",

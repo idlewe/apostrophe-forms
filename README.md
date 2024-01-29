@@ -10,7 +10,7 @@ Enable the modules in your `app.js` file as with other modules:
 // in app.js
 modules: {
   // ...,
-  'apostrophe-forms': {
+  'apostrophe-forms-ya': {
     // Best practice: set to first or last so that inputs are nested in labels
     // and easier to style
     optionLabelPosition: 'last'

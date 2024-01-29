@@ -18,7 +18,7 @@
       edit: false
     }) }}
 
-    {% set recaptchaSite = apos.modules['apostrophe-forms'].getOption('recaptchaSite') %}
+    {% set recaptchaSite = apos.modules['apostrophe-forms-ya'].getOption('recaptchaSite') %}
     {% if recaptchaSite %}
     <div id="aposRecaptcha{{widget._id}}"
             data-apos-recaptcha-slot="{{widget._id}}"
