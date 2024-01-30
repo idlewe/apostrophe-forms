@@ -50,7 +50,7 @@ describe('Forms module', function () {
             secret: 'test-the-forms'
           }
         },
-        'apostrophe-forms': {},
+        'apostrophe-forms-ya': {},
         ...formWidgets
       },
       afterInit: function (callback) {

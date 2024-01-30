@@ -2,7 +2,7 @@ const request = require('request-promise');
 const uniq = require('lodash.uniq');
 
 module.exports = {
-  name: 'apostrophe-forms',
+  name: 'apostrophe-forms-ya',
   label: 'Form',
   extend: 'apostrophe-pieces',
   seo: false,
@@ -306,8 +306,8 @@ module.exports = {
           for (const widget of widgets) {
             const manager = self.apos.areas.getWidgetManager(widget.type);
             if (
-              manager && manager.sanitizeFormField &&
-              !skipFields.includes(widget.fieldName)
+                manager && manager.sanitizeFormField &&
+                !skipFields.includes(widget.fieldName)
             ) {
               try {
                 manager.checkRequired(req, form, widget, input);
@@ -341,7 +341,6 @@ module.exports = {
 
     self.checkRecaptcha = async function (req, input, formErrors) {
       const recaptchaSecret = self.getOption(req, 'recaptchaSecret');
-      console.log('recaptchaSecret', recaptchaSecret)
       if (!input.recaptcha) {
         formErrors.push({
           global: true,
@@ -359,7 +358,7 @@ module.exports = {
 
         console.log('recaptchaSecret recaptchaResponse ', recaptchaResponse)
 
-        if (!recaptchaResponse.success) {
+        if (recaptchaResponse.status !== 'ok') {
           formErrors.push({
             global: true,
             error: 'recaptcha',
@@ -380,23 +379,23 @@ module.exports = {
       const form = options.form;
       const data = options.data;
       return self.email(
-        req,
-        emailTemplate,
-        {
-          form: form,
-          input: data
-        },
-        {
-          from: options.from || form.email,
-          to: options.to,
-          subject: options.subject || form.title
-        }
+          req,
+          emailTemplate,
+          {
+            form: form,
+            input: data
+          },
+          {
+            from: options.from || form.email,
+            to: options.to,
+            subject: options.subject || form.title
+          }
       );
     };
 
     self.sendEmailSubmissions = async function (req, form, data) {
       if (self.options.emailSubmissions === false ||
-        !form.emails || form.emails.length === 0) {
+          !form.emails || form.emails.length === 0) {
         return;
       }
 
