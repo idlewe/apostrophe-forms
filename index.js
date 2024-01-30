@@ -2,7 +2,7 @@ const request = require('request-promise');
 const uniq = require('lodash.uniq');
 
 module.exports = {
-  name: 'apostrophe-forms-ya',
+  name: 'apostrophe-forms',
   label: 'Form',
   extend: 'apostrophe-pieces',
   seo: false,
@@ -341,7 +341,7 @@ module.exports = {
 
     self.checkRecaptcha = async function (req, input, formErrors) {
       const recaptchaSecret = self.getOption(req, 'recaptchaSecret');
-
+      console.log('recaptchaSecret', recaptchaSecret)
       if (!input.recaptcha) {
         formErrors.push({
           global: true,
@@ -356,6 +356,8 @@ module.exports = {
           method: 'GET',
           uri: `${url}?secret=${recaptchaSecret}&token=${input.recaptcha}`
         }));
+
+        console.log('recaptchaSecret recaptchaResponse ', recaptchaResponse)
 
         if (!recaptchaResponse.success) {
           formErrors.push({
